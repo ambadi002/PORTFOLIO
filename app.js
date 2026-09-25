@@ -2,8 +2,13 @@ const menu = document.querySelector(".menu");
 const nav = document.querySelector(".navbar nav");
 const profilePhoto = document.querySelector(".chip-photo");
 const brand = document.querySelector(".navbar .brand");
+const heroName = document.querySelector(".hero-copy h1");
 
-// The image is in the repository root. Use a relative path that works on GitHub Pages.
+if (heroName) {
+  heroName.style.fontSize = "clamp(42px, 5vw, 72px)";
+  heroName.style.lineHeight = "0.95";
+}
+
 if (profilePhoto) {
   profilePhoto.src = "ambadi-vijayakumar.jpg.png";
   profilePhoto.removeAttribute("srcset");
@@ -12,7 +17,6 @@ if (profilePhoto) {
   }, { once: true });
 }
 
-// Remove the logo text and </> symbol from the header.
 if (brand) brand.remove();
 
 if (menu && nav) {
