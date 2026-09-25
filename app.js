@@ -1,18 +1,19 @@
 const menu = document.querySelector(".menu");
 const nav = document.querySelector(".navbar nav");
-const brand = document.querySelector(".navbar .brand");
 const profilePhoto = document.querySelector(".chip-photo");
+const brand = document.querySelector(".navbar .brand");
 
-// The profile image is stored at the repository root, not in an assets folder.
+// The image is in the repository root. Use a relative path that works on GitHub Pages.
 if (profilePhoto) {
-  profilePhoto.src = "./ambadi-vijayakumar.jpg.png";
+  profilePhoto.src = "ambadi-vijayakumar.jpg.png";
+  profilePhoto.removeAttribute("srcset");
+  profilePhoto.addEventListener("error", () => {
+    profilePhoto.src = "https://ambadi002.github.io/PORTFOLIO/ambadi-vijayakumar.jpg.png";
+  }, { once: true });
 }
 
-// Hide the header brand so neither the name nor the </> mark is displayed.
-if (brand) {
-  brand.setAttribute("aria-hidden", "true");
-  brand.remove();
-}
+// Remove the logo text and </> symbol from the header.
+if (brand) brand.remove();
 
 if (menu && nav) {
   menu.addEventListener("click", () => nav.classList.toggle("open"));
